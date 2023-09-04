@@ -3,8 +3,10 @@ import { styled } from 'styled-components';
 
 import Button from '../../UI/Button/Button';
 import './CourseInput.css';
+import styles from './CourseInput.module.css';
 
-const FormControl = styled.div`
+
+const StyledFormControl = styled.div`
   margin: 0.5rem 0;
   
   & label {
@@ -55,12 +57,13 @@ const CourseInput = props => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <FormControl
+      <div className={`${styles['form-control']} ${!isValid && styles.invalid}`}
+        // <StyledFormControl />
         // dynamic classes
         // className={`form-control ${!isValid ? 'invalid' : ''}`} or className={!isValid && 'invalid'}
         
         // dynamic props
-        invalid={!isValid}      
+        // invalid={!isValid}      
       >
         <label 
         /* style={{
@@ -76,7 +79,7 @@ const CourseInput = props => {
         }}*/
           type="text" 
           onChange={goalInputChangeHandler} />
-      </FormControl>
+      </div>
       <Button type="submit">Add Goal</Button>
     </form>
   );

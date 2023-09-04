@@ -1,9 +1,13 @@
-import './Button.css';
+// import './Button.css';
 // so the styles will be used in the component file only (no overlapping class names/classes)
 import { styled } from 'styled-components';
 
+// using CSS modules
+// this here (styles) creates unique classes/versions
+import styles from './Button.module.css';
+
 // tagged template literal, special kind of method
-const Button = styled.button`
+const StyledButton = styled.button`
   font: inherit;
   padding: 0.5rem 1.5rem;
   border: 1px solid #8b005d;
@@ -32,12 +36,13 @@ const Button = styled.button`
 
 `;
 
-// const Button = props => {
-//   return (
-//     <button type={props.type} className="button" onClick={props.onClick}>
-//       {props.children}
-//     </button>
-//   );
-// };
+const Button = props => {
+  return (
+    // turns it into an object
+    <button type={props.type} className={styles.button} onClick={props.onClick}>
+      {props.children}
+    </button>
+  );
+};
 
 export default Button;
